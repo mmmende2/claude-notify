@@ -1,0 +1,38 @@
+{
+  "description": "macOS notification system for Claude Code using alerter",
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ${CLAUDE_PLUGIN_ROOT}/claude-notify.sh check_deps",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "matcher": "idle_prompt",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ${CLAUDE_PLUGIN_ROOT}/claude-notify.sh idle_prompt",
+            "timeout": 120
+          }
+        ]
+      },
+      {
+        "matcher": "permission_prompt",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ${CLAUDE_PLUGIN_ROOT}/claude-notify.sh permission_prompt",
+            "timeout": 75
+          }
+        ]
+      }
+    ]
+  }
+}
