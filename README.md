@@ -19,17 +19,15 @@ macOS notifications for [Claude Code](https://claude.ai/code) via [alerter](http
 ## Install
 
 ```bash
-# Install dependencies
-brew install vjeantet/tap/alerter jq
-
-# Install the plugin (from within Claude Code)
-/plugin install gh:mario/claude-notify
-
-# Or manually
-git clone https://github.com/mario/claude-notify ~/.claude/plugins/manual/claude-notify
-
-# Restart Claude Code for hooks to take effect
+curl -fsSL https://raw.githubusercontent.com/mmmende2/claude-notify/main/install.sh | bash
 ```
+
+This will:
+- Install dependencies (`alerter`, `jq`) via Homebrew
+- Clone the repo to `~/.claude/claude-notify/`
+- Add hooks to `~/.claude/settings.json`
+
+Restart Claude Code for hooks to take effect.
 
 ## macOS Notification Settings
 
@@ -58,13 +56,13 @@ Run these from any terminal to verify the plugin works:
 
 ```bash
 # Basic notification — click to focus Claude Code pane
-bash ~/.claude/plugins/manual/claude-notify/claude-notify.sh test_notify
+bash ~/.claude/claude-notify/claude-notify.sh test_notify
 
 # Permission prompt
-bash ~/.claude/plugins/manual/claude-notify/claude-notify.sh test_permission
+bash ~/.claude/claude-notify/claude-notify.sh test_permission
 
 # Idle prompt with reply field
-bash ~/.claude/plugins/manual/claude-notify/claude-notify.sh test_idle
+bash ~/.claude/claude-notify/claude-notify.sh test_idle
 ```
 
 ## Limitations
